@@ -1,16 +1,16 @@
-//Dynamically allocate memory for a array and print it
+//Remove the element from position s of the array
 
 #include<stdio.h>
 #include<stdlib.h>
 
 int main(void){
-    int *p,n;
+    int *p, n, pos;
     printf("Enter the number of elements: ");
     scanf("%d", &n);
     p = (int *)malloc(n * sizeof(int));
 
-    if(p == NULL){
-        printf("Can't allocate space right now");
+    if (p == NULL){
+        printf("Can't allocate memory right now");
         return 0;
     }
 
@@ -19,8 +19,15 @@ int main(void){
         scanf("%d", &p[i]);
     }
 
-    printf("Entered array elements are: \n");
-    for(int i=0; i<n; i++){
+    printf("Enter the index to be removed: ");
+    scanf("%d", &pos);
+
+    for(int i=pos; i<n-1; i++){
+        p[i] = p[i+1]; 
+    }
+
+    printf("Updated array: \n");
+    for (int i=0; i<n-1; i++){
         printf("%d ", p[i]);
     }
 

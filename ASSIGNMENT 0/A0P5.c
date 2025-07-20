@@ -1,16 +1,16 @@
-//Dynamically allocate memory for a array and print it
+//Linear Search
 
 #include<stdio.h>
 #include<stdlib.h>
 
 int main(void){
-    int *p,n;
+    int *p, n,z, pos;
     printf("Enter the number of elements: ");
     scanf("%d", &n);
     p = (int *)malloc(n * sizeof(int));
 
-    if(p == NULL){
-        printf("Can't allocate space right now");
+    if (p == NULL){
+        printf("Can't allocate memory right now");
         return 0;
     }
 
@@ -19,10 +19,16 @@ int main(void){
         scanf("%d", &p[i]);
     }
 
-    printf("Entered array elements are: \n");
+    printf("Enter the element to be searched: ");
+    scanf("%d", &z);
     for(int i=0; i<n; i++){
-        printf("%d ", p[i]);
+        if(p[i] == z){
+            pos = i;
+            break;
+        }
     }
+
+    printf("Element found at index: %d", pos);
 
     free(p);
     return 0;
