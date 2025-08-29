@@ -49,14 +49,11 @@ void display(){
     if (front == -1)
         printf("Queue is empty !");
     else{
-        printf("Queue elements: \n");
-        int i = front;
-        while (1) {
+        printf("Queue elements: ");
+        for(int i=front; i != rear; i= (i+1)%MAX){
             printf("%d ", queue[i]);
-            if (i == rear)
-                break;
-            i = (i + 1) % MAX;
         }
+        printf("%d", queue[rear]);
     }
 }
 
