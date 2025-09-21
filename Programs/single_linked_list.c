@@ -169,6 +169,7 @@ void deleteBeginning(){
     int deletedvalue = temp->data;
     head = head->next;
     free(temp);
+    printf("Node with vlaue %d deleted from beginning", deletedvalue);
 }
 
 void deleteEnd(){
