@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -78,7 +77,7 @@ void insertBeginning(){
     scanf("%d", &value);
 
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    if (newNode == NULL){
+    if(newNode == NULL){
         printf("Memory allocation failed\n");
         return;
     }
@@ -96,7 +95,7 @@ void insertEnd(){
     scanf("%d", &value);
 
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    if (newNode == NULL){
+    if(newNode == NULL){
         printf("Memory allocation failed\n");
         return;
     }
@@ -104,13 +103,11 @@ void insertEnd(){
     newNode->data = value;
     newNode->next = NULL;
 
-    if (head == NULL){
+    if(head == NULL){
         head = newNode;
-    }
-    else{
+    }else{
         struct Node *temp = head;
-        while (temp->next != NULL)
-        {
+        while (temp->next != NULL){
             temp = temp->next;
         }
         temp->next = newNode;
@@ -128,7 +125,7 @@ void insertPos(){
         return;
     }
 
-    if (pos == 1){
+    if(pos == 1){
         insertBeginning();
         return;
     }
