@@ -133,6 +133,7 @@ void insertPos(){
     struct Node *temp = head;
     while (i < pos - 1 && temp != NULL){
         temp = temp->next;
+        i++;
     }
 
     if (temp == NULL){
