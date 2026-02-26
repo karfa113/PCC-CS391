@@ -74,12 +74,12 @@ void insertPos(){
 	
 	int i=1;
 	struct Node* temp = head;
-	while(i<pos-1 && temp->next != NULL){
+	while(i<pos-1 && temp != NULL){
 		temp = temp->next;
 		i++;
 	}
 	
-	if(temp->next == NULL){
+	if(temp == NULL){
 		printf("Position is out of bounds");
 		return;
 	}
@@ -94,9 +94,12 @@ void insertPos(){
 	}
 	newNode->data = value;
 	newNode->next = temp->next;
-	temp->next->prev = newNode;
-	temp->next = newNode;
 	newNode->prev = temp;
+	
+	if(temp->next != NULL){
+		temp->next->prev = newNode;
+	}
+	temp->next = newNode;
 }
 
 void deleteBeg(){
@@ -159,8 +162,9 @@ void deletePos(){
 	
 	int i=1;
 	struct Node* del = head;
-	while(i<pos-1 && del->next != NULL){
+	while(i<pos && del != NULL){
 		del = del->next;
+		i++;
 	}
 	
 	if(del == NULL){
@@ -168,8 +172,12 @@ void deletePos(){
 		return;
 	}
 	
-	del->prev->next = del->next;
-	del->next->prev = del->prev;
+	if(del->prev != NULL){
+		del->prev->next = del->next;
+	}
+	if(del->next != NULL){
+		del->next->prev = del->prev;
+	}
 	free(del);
 }
 

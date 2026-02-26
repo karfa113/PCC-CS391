@@ -95,7 +95,7 @@ void insertEnd(){
     scanf("%d", &value);
 
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    if(newNode == NULL){
+    if (newNode == NULL){
         printf("Memory allocation failed\n");
         return;
     }
@@ -167,7 +167,7 @@ void deleteBeginning(){
     int deletedvalue = temp->data;
     head = head->next;
     free(temp);
-    printf("Node with vlaue %d deleted from beginning", deletedvalue);
+    printf("Node with value %d deleted from beginning", deletedvalue);
 }
 
 void deleteEnd(){
@@ -180,7 +180,7 @@ void deleteEnd(){
         int deletedValue = head->data;
         free(head);
         head = NULL;
-        printf("Node with value %d deleted form the end\n", deletedValue);
+        printf("Node with value %d deleted from the end\n", deletedValue);
         return;
     }
 
@@ -215,17 +215,21 @@ void search(){
     int key, pos = 1;
     printf("Enter the key: ");
     scanf("%d", &key);
+    int found = 0;
 
     struct Node *temp = head;
-    while (temp->next != NULL){
+    while (temp != NULL){
         if (temp->data == key){
             printf("Element found at pos %d\n", pos);
-            return;
+            found = 1;
+            break;
         }
         temp = temp->next;
         pos++;
     }
-    printf("Element not found in the list\n");
+    if(!found) {
+        printf("Element not found in the list\n");
+    }
 }
 
 void reverse(){
